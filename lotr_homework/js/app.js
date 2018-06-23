@@ -84,11 +84,24 @@ const makeHobbits = () => {
 
   console.log('Make hobbits');
 
+
   // 1. display an unordered list of the hobbits in the shire.
+  const $ul = $('<ul></ul>');
+  const $li = $('<li></li>');
+    $ul.append($li);
+    $ul.append('<li>Frodo Baggins</li>');
+    $ul.append('<li>Samwise "Sam" Gamgee</li>');
+    $ul.append('<li>Meriadoc "Merry" Brandybuck</li>');
+    $ul.append('<li>Peregrin "Pippin" Took</li>');
+    for(i = 0; i < hobbits.length; i++){
+      console.log(hobbits[i]);
+    }
 
   // 2. give each hobbit a class of "hobbit"
+    $ul.attr('id', 'hobbits');
 
   // hint: create a 'ul' outside the loop upon which to append the 'li's
+
 
   // hint: get 'The-Shire' by using its id
 
