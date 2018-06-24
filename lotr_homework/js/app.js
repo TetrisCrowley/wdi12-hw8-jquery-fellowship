@@ -88,14 +88,25 @@ const makeHobbits = () => {
   // 1. display an unordered list of the hobbits in the shire.
   const $ul = $('<ul></ul>');
   const $li = $('<li></li>');
-    $ul.append($li);
-    $ul.append('<li>Frodo Baggins</li>');
-    $ul.append('<li>Samwise "Sam" Gamgee</li>');
-    $ul.append('<li>Meriadoc "Merry" Brandybuck</li>');
-    $ul.append('<li>Peregrin "Pippin" Took</li>');
-    for(i = 0; i < hobbits.length; i++){
-      console.log(hobbits[i]);
-    }
+    // $ul.append($li);
+    // $ul.append('<li>Frodo Baggins</li>');
+    // $ul.append('<li>Samwise "Sam" Gamgee</li>');
+    // $ul.append('<li>Meriadoc "Merry" Brandybuck</li>');
+    // $ul.append('<li>Peregrin "Pippin" Took</li>');
+    // for(i = 0; i < hobbits.length; i++){
+    //   console.log(hobbits[i]);
+    // }
+
+for(let i = 0; i < hobbits.length; i++){
+  //console.log(hobbits[i])
+  const $ul = $("<ul/>");
+  const $li = $('<li/>');
+  $li.text(hobbits[i]);
+  $li.addClass("hobbits");
+  $ul.append($li);
+  $("#The-Shire").append($ul);
+
+}
 
   // 2. give each hobbit a class of "hobbit"
     $ul.attr('class', 'hobbits');
@@ -121,14 +132,19 @@ const keepItSecretKeepItSafe = () => {
   // 1. create an empty div with an id of 'the-ring'
   const $div = $('<div></div>');
     $div.attr('id', 'the-ring');
+    console.log($div);
 
   // 2. add the ring as a child of Frodo
-
+    $("li").each(function(index) {
+    console.log( index + ": " + $(this).text() );
+    });
 
   // hint: Frodo does not have an id, but there is a command to retrieve all elements with a certain class. This should give you an array for you to access . . .
 
   // when you think you have given Frodo the ring, check in your Elements tab
-
+      // $($(‘.hobbit’)[0]).append('#the-ring');
+      $(".hobbits")[0].append(" the-ring");
+      console.log($('.hobbit'));
 };
 
 // COMMIT YOUR WORK
