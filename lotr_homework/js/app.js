@@ -55,7 +55,7 @@ const $body = $('body');
   $body.append($section);
 
   // 3. use a for loop to iterate over the lands array that does the following:
-  for(i = 0; i < lands.length; i++){
+  for(let i = 0; i < lands.length; i++){
     
   //   3a. creates an article tag (there should be one for each land when the loop is done)
   const $article = $('<article></article');
@@ -156,10 +156,19 @@ const keepItSecretKeepItSafe = () => {
 const makeBaddies = () => {
 
   // 1. display an unordered list of baddies in Mordor
+  for(let i = 0; i < baddies.length; i++){
+    const $ul = $("<ul/>");
+    const $li = $('<li/>');
+    $li.text(baddies[i]);
+  }
 
   // 2. give each of the baddies a class of "baddy"
+    $li.addClass("baddies");
+    $ul.append($li);
 
   // 3. remember to append them to Mordor
+    $("#Mordor").append($ul);
+
 };
 
 // COMMIT YOUR WORK
