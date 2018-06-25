@@ -86,8 +86,6 @@ const makeHobbits = () => {
 
 
   // 1. display an unordered list of the hobbits in the shire.
-  const $ul = $('<ul></ul>');
-  const $li = $('<li></li>');
     // $ul.append($li);
     // $ul.append('<li>Frodo Baggins</li>');
     // $ul.append('<li>Samwise "Sam" Gamgee</li>');
@@ -99,20 +97,18 @@ const makeHobbits = () => {
 
 for(let i = 0; i < hobbits.length; i++){
   //console.log(hobbits[i])
-  const $ul = $("<ul/>");
+  const $ul = $('<ul/>');
   const $li = $('<li/>');
   $li.text(hobbits[i]);
-  $li.addClass("hobbits");
+  $li.attr('class', 'hobbits');
   $ul.append($li);
-  $("#The-Shire").append($ul);
-
+  $('#The-Shire').append($ul);
 }
 
   // 2. give each hobbit a class of "hobbit"
-    $ul.attr('class', 'hobbits');
 
-    const $theShire = $('#The-Shire');
-    $theShire.append($ul);
+    // const $theShire = $('#The-Shire');
+    // $theShire.append($ul);
 
   // hint: create a 'ul' outside the loop upon which to append the 'li's
 
@@ -135,15 +131,15 @@ const keepItSecretKeepItSafe = () => {
     console.log($div);
 
   // 2. add the ring as a child of Frodo
-    $("li").each(function(index) {
-    console.log( index + ": " + $(this).text() );
+    $('li').each(function(index) {
+    console.log(index + ": " + $(this).text() );
     });
 
   // hint: Frodo does not have an id, but there is a command to retrieve all elements with a certain class. This should give you an array for you to access . . .
 
   // when you think you have given Frodo the ring, check in your Elements tab
       // $($(‘.hobbit’)[0]).append('#the-ring');
-      $(".hobbits")[0].append(" the-ring");
+      $('.hobbits').append($div);
       console.log($('.hobbit'));
 };
 
@@ -156,19 +152,17 @@ const keepItSecretKeepItSafe = () => {
 const makeBaddies = () => {
 
   // 1. display an unordered list of baddies in Mordor
+  const $ul = $('<ul/>');
   for(let i = 0; i < baddies.length; i++){
-    const $ul = $("<ul/>");
     const $li = $('<li/>');
     $li.text(baddies[i]);
-  }
 
   // 2. give each of the baddies a class of "baddy"
-    $li.addClass("baddies");
+    $li.addClass('baddy');
     $ul.append($li);
-
+  }
   // 3. remember to append them to Mordor
-    $("#Mordor").append($ul);
-
+    $('#Mordor').append($ul);
 };
 
 // COMMIT YOUR WORK
@@ -180,12 +174,23 @@ const makeBaddies = () => {
 const makeBuddies = () => {
 
   // 1. create an aside tag and append it to middle-earth below mordor
+  const $aside = $("<aside/>");
+  const $ul = $("<ul/>");
+    $ul.appendTo($aside);
+    $('#middle-earth').append($aside);
 
   // 2. display an unordered list of buddies in the aside
+      for(let i = 0; i < buddies.length; i++){
+      const $li = $("<li/>");
 
+  
   // 3. give each of the buddies a class of "buddy"
-
+      $li.text(buddies[i]);
+      $li.addClass('buddy');
+      $ul.append($li);
+  }
 };
+
 
 // COMMIT YOUR WORK
 // The commit message should read: "Chapter 5 complete - Made the Buddies".
@@ -196,6 +201,8 @@ const makeBuddies = () => {
 const leaveTheShire = () => {
 
   // 1. grab the hobbits (the ul in which they reside) and move them to Rivendell
+  $('#The-Shire').find('.hobbits');
+  $('.hobbits').appendTo('#Rivendell');
 
   // hint: the hobbits ul is a childNode of The-Shire-- there is way to get a list of childNodes
 
@@ -210,6 +217,8 @@ const leaveTheShire = () => {
 const beautifulStranger = () => {
 
   // 1. change the buddy 'Strider' textnode to "Aragorn"
+  const $strider = $('aside').contents($('li')).children()[3];
+    $strider.textContent = 'Aragorn';
 
   // hint: You can get a list of elements by tag name, such as 'aside'
 
@@ -224,13 +233,21 @@ const beautifulStranger = () => {
 const forgeTheFellowShip = () => {
 
   // 1. create a new div with an id 'the-fellowship'
+  const $div = $('<div></div');
+    $div.attr('id', 'the-fellowship');
 
   // 2. add an h1 with the text 'The Fellowship' to this new div
+  const $h1 = $('<h1>');
+    $h1.text("The Fellowship"); 
+    $div.append($h1);
 
   // 3. append the fellowship to middle-earth
+    $('#middle-earth').append($div);
 
   // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
-
+    $('#Rivendell').find('.hobits');
+    $('.hobbits').appendTo('#the-fellowship');
+    $('.buddy').appendTo('#the-fellowship');
 };
 
 // COMMIT YOUR WORK
@@ -242,8 +259,10 @@ const forgeTheFellowShip = () => {
 const theBalrog = () => {
 
   // 1. change the 'Gandalf' textNode to 'Gandalf the White'
+  $(`.buddy:contains('Gandalf')`).text('Gandalf the White')
 
   // 2. add a class "the-white" to this element
+
 
   // 3. in the style.css file, add a css rule to make elements of the class "the-white" have a white background and a grey border
 
