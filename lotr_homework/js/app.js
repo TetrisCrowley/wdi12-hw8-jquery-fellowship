@@ -278,12 +278,13 @@ const theBalrog = () => {
 const hornOfGondor = () => {
 
   // 1. create a pop-up alert that the horn of gondor has been blown
-  alert.("Horn of Gondor has been blown!");
+  alert("Horn of Gondor has been blown!");
 
   // 2. Boromir's been killed by the Uruk-hai! Put a line through on Boromir's name
-
+  $(`.buddy:contains('Boromir')`).css('text-decoration', 'line-through');
 
   // 3. Tricky: Remove the Uruk-Hai from the Baddies on the page
+  $(`.baddy:contains('The Uruk-hai')`).remove();
 
 };
 
@@ -296,8 +297,10 @@ const hornOfGondor = () => {
 const itsDangerousToGoAlone = () => {
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
+  $(`.hobbits:contains('Frodo Baggins')`).appendTo($('#Mordor'));
 
   // 2. add a div with an id of 'mount-doom' to Mordor
+  $(`.hobbits:contains("Samwise 'Sam' Gamgee")`).appendTo($('#Mordor'));
 
 };
 
