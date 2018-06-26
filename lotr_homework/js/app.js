@@ -127,20 +127,20 @@ const keepItSecretKeepItSafe = () => {
 
   // 1. create an empty div with an id of 'the-ring'
   const $div = $('<div></div>');
-    $div.attr('id', 'the-ring');
-    console.log($div);
+  $div.attr('id', 'the-ring');
+  console.log($div);
 
   // 2. add the ring as a child of Frodo
-    $('li').each(function(index) {
+  $('li').each(function(index) {
     console.log(index + ": " + $(this).text() );
-    });
+  });
 
   // hint: Frodo does not have an id, but there is a command to retrieve all elements with a certain class. This should give you an array for you to access . . .
 
   // when you think you have given Frodo the ring, check in your Elements tab
-      // $($(‘.hobbit’)[0]).append('#the-ring');
-      $('.hobbits').append($div);
-      console.log($('.hobbit'));
+      $($('.hobbits')[0]).append($div);
+      // $('Frodo Baggins').append($div);
+      console.log($('.hobbits'));
 };
 
 // COMMIT YOUR WORK
@@ -245,7 +245,7 @@ const forgeTheFellowShip = () => {
     $('#middle-earth').append($div);
 
   // 4. add the unordered lists of hobbits and buddies to 'the-fellowship'
-    $('#Rivendell').find('.hobits');
+    $('#Rivendell').find('.hobbits');
     $('.hobbits').appendTo('#the-fellowship');
     $('.buddy').appendTo('#the-fellowship');
 };
@@ -298,9 +298,12 @@ const itsDangerousToGoAlone = () => {
 
   // 1. take Frodo and Sam out of the fellowship and move them to Mordor (they don't need to be inside a ul in Mordor)
   $(`.hobbits:contains('Frodo Baggins')`).appendTo($('#Mordor'));
+  $(`.hobbits:contains("Samwise 'Sam' Gamgee")`).appendTo($('#Mordor'));
 
   // 2. add a div with an id of 'mount-doom' to Mordor
-  $(`.hobbits:contains("Samwise 'Sam' Gamgee")`).appendTo($('#Mordor'));
+  const $div = $('<div></div>');
+  $div.attr('id', 'mount-doom');
+  $('#Mordor').append($div);
 
 };
 
@@ -313,11 +316,15 @@ const itsDangerousToGoAlone = () => {
 const weWantsIt = () => {
 
   // 1. Create a div with an id of 'gollum' and add it to Mordor
+  const $div = $('<div/>');
+  $div.attr('id', 'gollum');
+  $('#Mordor').append($div);
 
   // 2. Move the ring from Frodo and give it to Gollum
+  $('#the-ring').appendTo($div);
 
   // 3. Move Gollum into Mount Doom
-
+  $('#gollum').appendTo('#mount-doom');
 };
 
 // COMMIT YOUR WORK
@@ -329,10 +336,13 @@ const weWantsIt = () => {
 const thereAndBackAgain = () => {
 
   // 1. remove Gollum and the Ring from the DOM
+  $('#gollum').remove();
 
   // 2. remove all the baddies from the DOM
+  $('.baddies').remove();
 
   // 3. Move all the hobbits back to the shire
+  $('#The-Shire').append($('.hobbits'));
 
 };
 
